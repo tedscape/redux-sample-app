@@ -1,6 +1,6 @@
-import {next,vote,setEntries} from './core';
+import {next,vote,setEntries,INITIAL_STATE} from './core';
 
-export default function reducer(state, action){
+export default function reducer(state=INITIAL_STATE, action){
     "use strict";
 
     switch(action.type){
@@ -14,4 +14,5 @@ export default function reducer(state, action){
             return vote(state,action.entry);
             break;
     }
+    return state;
 }

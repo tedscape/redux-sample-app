@@ -35,16 +35,24 @@ describe('reducer', ()=> {
                 pair: ['Trainspotting', 'Sunshine']
             }
         });
-        const action={type:'VOTE', entry:'Trainspotting'};
-        const nextState=reducer(initialState,action);
+        const action = {type: 'VOTE', entry: 'Trainspotting'};
+        const nextState = reducer(initialState, action);
         expect(nextState).to.equal(fromJS({
-            entries:[],
-            vote:{
-                pair:['Trainspotting','Sunshine'],
-                tally:{
-                    'Trainspotting':1
+            entries: [],
+            vote: {
+                pair: ['Trainspotting', 'Sunshine'],
+                tally: {
+                    'Trainspotting': 1
                 }
             }
         }));
     });
-})
+    it('has an initial state', ()=> {
+        const initialState = Map();
+        const action ={type:'SET_ENTRIES',entries:['Trainspotting','Sunshine']};
+        const nextState=reducer(undefined,action);
+        expect(nextState).to.equal(fromJS({
+            entries:['Trainspotting','Sunshine']
+        }));
+    });
+});
