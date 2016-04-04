@@ -4,7 +4,9 @@
   "description": "This app is the implementation of Tero Parviainen article http://teropa.info/blog/2015/09/10/full-stack-redux-tutorial.html",
   "main": "index.js",
   "dependencies": {
-    "immutable": "^3.7.6"
+    "immutable": "^3.7.6",
+    "redux": "^3.3.1",
+    "socket.io": "^1.4.5"
   },
   "devDependencies": {
     "babel-cli": "^6.6.5",
