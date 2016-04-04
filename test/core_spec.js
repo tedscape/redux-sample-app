@@ -32,10 +32,6 @@ describe('application logic', ()=> {
                 entries: List.of('Trainspotting', '28 Days Later', 'Sunshine')
             });
             const nextState = next(state);
-            console.log('state');
-            console.log(state);
-            console.log('nextState');
-            console.log(nextState);
             expect(nextState).to.equal(Map({
                 vote: Map({
                     pair: List.of('Trainspotting', '28 Days Later')
@@ -81,28 +77,28 @@ describe('application logic', ()=> {
 
             const nextState = next(state);
             expect(nextState).to.equal(Map({
-                entries:List.of('127 Hours','Trainspotting','28 Days Later'),
-                vote:Map({
-                    pair:List.of('Sunshine','Millions')
+                entries: List.of('127 Hours', 'Trainspotting', '28 Days Later'),
+                vote: Map({
+                    pair: List.of('Sunshine', 'Millions')
                 })
             }));
 
         });
-        it('marks winner when 1 vote left',()=>{
+        it('marks winner when 1 vote left', ()=> {
 
-            const state=Map({
-                vote:Map({
-                    pair:List.of('Trainspotting','Sunshine'),
-                    tally:Map({
-                        'Trainspotting':4,
-                        'Sunshine':3
+            const state = Map({
+                vote: Map({
+                    pair: List.of('Trainspotting', 'Sunshine'),
+                    tally: Map({
+                        'Trainspotting': 4,
+                        'Sunshine': 3
                     })
                 }),
-                entries:List()
+                entries: List()
             });
-            const nextState =next(state);
+            const nextState = next(state);
             expect(nextState).to.equal(Map({
-                winner:'Trainspotting'
+                winner: 'Trainspotting'
             }));
         });
 
@@ -112,19 +108,13 @@ describe('application logic', ()=> {
         it('creates a tally for the voted entry', ()=> {
             "use strict";
             const state = Map({
-                entries: List.of(),
-                vote: Map({
-                    pair: List.of('Trainspotting', '28 Days Later')
-                })
+                pair: List.of('Trainspotting', '28 Days Later')
             });
             const nextState = vote(state, 'Trainspotting');
             expect(nextState).to.equal(Map({
-                entries: List.of(),
-                vote: Map({
-                    pair: List.of('Trainspotting', '28 Days Later'),
-                    tally: Map({
-                        'Trainspotting': 1
-                    })
+                pair: List.of('Trainspotting', '28 Days Later'),
+                tally: Map({
+                    'Trainspotting': 1
                 })
             }));
 
@@ -133,24 +123,19 @@ describe('application logic', ()=> {
         it('adds to existing tally for the voted entry', ()=> {
             "use strict";
             const state = Map({
-                entries: List.of(),
-                vote: Map({
-                    pair: List.of('Trainspotting', 'Sunshine'),
-                    tally: Map({
-                        'Trainspotting': 3,
-                        'Sunshine': 2
-                    })
+
+                pair: List.of('Trainspotting', 'Sunshine'),
+                tally: Map({
+                    'Trainspotting': 3,
+                    'Sunshine': 2
                 })
             });
             const nextState = vote(state, 'Sunshine');
             expect(nextState).to.equal(Map({
-                entries: List.of(),
-                vote: Map({
-                    pair: List.of('Trainspotting', 'Sunshine'),
-                    tally: Map({
-                        'Trainspotting': 3,
-                        'Sunshine': 3
-                    })
+                pair: List.of('Trainspotting', 'Sunshine'),
+                tally: Map({
+                    'Trainspotting': 3,
+                    'Sunshine': 3
                 })
             }));
 
